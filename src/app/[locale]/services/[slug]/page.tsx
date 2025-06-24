@@ -1,5 +1,5 @@
-import { client } from '../../../../sanity/lib/sanity.client';
-import { ServiceCardType } from '../../../../types/sanityTypes';
+import { client } from '@cms/lib/sanity.client';
+import { ServiceCardType } from '../../../../../types/sanityTypes';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { draftMode } from 'next/headers';

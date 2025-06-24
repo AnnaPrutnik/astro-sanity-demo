@@ -1,10 +1,10 @@
-import { client } from '../../../../sanity/lib/sanity.client';
-import { PostType } from '../../../../types/sanityTypes';
+import { client } from '@cms/lib/sanity.client';
+import { PostType } from '../../../../../types/sanityTypes';
 import { notFound } from 'next/navigation';
 import { PortableText } from 'next-sanity';
 import Image from 'next/image';
 import Link from 'next/link';
-import { urlFor } from '../../../../sanity/lib/sanity.image';
+import { urlFor } from '@cms/lib/sanity.image';
 import { draftMode } from 'next/headers';
 import { getCurrentBlogQuery } from '@/api/queries';
 

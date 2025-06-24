@@ -4,6 +4,7 @@ import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './sanity/schemas';
 import { deskStructure } from './sanity/lib/deskStructure';
 import { presentationTool } from 'sanity/presentation';
+import { documentInternationalization } from '@sanity/document-internationalization';
 
 export default defineConfig({
   name: 'default',
