@@ -18,7 +18,7 @@ export default async function Home() {
       { slug: undefined },
       isEnabled
         ? {
-            perspective: 'drafts',
+            perspective: 'previewDrafts',
             useCdn: false,
             stega: true,
           }
@@ -29,7 +29,7 @@ export default async function Home() {
       { slug: undefined },
       isEnabled
         ? {
-            perspective: 'drafts',
+            perspective: 'previewDrafts',
             useCdn: false,
             stega: true,
           }

@@ -19,7 +19,7 @@ export default async function ServicePage({ params }: { params: Params }) {
     { slug },
     isEnabled
       ? {
-          perspective: 'drafts',
+          perspective: 'previewDrafts',
           useCdn: false,
           stega: true,
         }

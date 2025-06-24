@@ -16,12 +16,14 @@ export default async function Page({ params }: { params: Params }) {
   const { slug } = await params;
   const { isEnabled } = await draftMode();
 
+  console.log(draftMode);
+
   const post: PostType | null = await client.fetch(
     getCurrentBlogQuery,
     { slug },
     isEnabled
       ? {
-          perspective: 'drafts',
+          perspective: 'previewDrafts',
           useCdn: false,
           stega: true,
         }
