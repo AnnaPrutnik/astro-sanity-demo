@@ -5,6 +5,7 @@ import { About } from '@/components/sections/About';
 import Divider from '@/components/shared/Divider';
 import { Services } from '@/components/sections/Services';
 import { Blog } from '@/components/sections/Blog';
+import { Contact } from '@/components/sections/Contact';
 
 export default async function Home() {
   const [mainPageData, siteSettings] = await Promise.all([
@@ -27,6 +28,8 @@ export default async function Home() {
         <Services data={mainPageData.servicesSection} />
         <Divider />
         <Blog data={mainPageData.blogSection} />
+        <Divider />
+        <Contact data={siteSettings.contactInfo} />
       </main>
     </>
   );
