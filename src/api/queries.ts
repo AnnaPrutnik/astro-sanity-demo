@@ -1,8 +1,6 @@
-import { client } from '../../sanity/lib/sanity.client';
-import { MainPageType, SiteSettingsType } from '../../types/sanityTypes';
+import { defineQuery } from 'next-sanity';
 
-export async function getMainPageData(): Promise<MainPageType> {
-  const query = `*[_type == "mainPage"][0]{
+export const mainPageQuery = defineQuery(`*[_type == "mainPage"][0]{
     title,
     heroSection{
       title,
@@ -27,13 +25,14 @@ export async function getMainPageData(): Promise<MainPageType> {
       text,
       articles[]->
     }
-  }`;
+  }`);
 
-  return client.fetch(query);
-}
+export const siteSettingQuery = defineQuery(`*[_type == "siteSettings"][0]`);
 
-export async function getSiteSettings(): Promise<SiteSettingsType> {
-  const query = `*[_type == "siteSettings"][0]`;
+export const getCurrentServiceQuery = defineQuery(
+  `*[_type == "serviceCard" && slug.current == $slug][0]`
+);
 
-  return client.fetch(query);
-}
+export const getCurrentBlogQuery = defineQuery(
+  `*[_type == "post" && slug.current == $slug][0]`
+);

@@ -21,10 +21,16 @@ export interface ServiceCardType {
 }
 
 export interface MainPageType {
+  _id: string;
+  _type: 'mainPage';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
   heroSection: HeroSectionType;
   aboutSection: AboutSectionType;
   servicesSection: ServiceSectionType;
   blogSection: BlogSectionType;
+  [key: string]: unknown;
 }
 
 export interface ServiceSectionType {

@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import { VisualEditing } from 'next-sanity';
+import { draftMode } from 'next/headers';
+import { DisableDraftMode } from '@/components/DisabledDraftMode';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import './globals.css';
@@ -18,17 +21,24 @@ export const metadata: Metadata = {
   description: 'Demo version for Sanity capabilities',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html
+      lang="en"
+      className={`${geistSans.className} ${geistMono.className} antialiased`}
+    >
+      <body>
         {children}
+        {(await draftMode()).isEnabled ? (
+          <>
+            <VisualEditing />
+            <DisableDraftMode />
+          </>
+        ) : null}
       </body>
     </html>
   );

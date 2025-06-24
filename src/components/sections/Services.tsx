@@ -1,5 +1,6 @@
 import React from 'react';
 import { ServiceSectionType } from '../../../types/sanityTypes';
+import Link from 'next/link';
 
 interface ServicesProps {
   data: ServiceSectionType;
@@ -24,11 +25,11 @@ export const Services = ({ data }: ServicesProps) => {
               key={service._id}
               className={`bg-dark-grey relative rounded-xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105 ${service.featured ? 'ring-2 ring-accent relative' : ''}`}
             >
-              <a
+              <Link
                 href={`/services/${service.slug.current}`}
                 aria-label="link for current service"
                 className="absolute inset-0 cursor-pointer"
-              ></a>
+              ></Link>
               {service.featured && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <span className="bg-dark-grey text-accent px-4 py-2 rounded-full text-sm font-semibold">

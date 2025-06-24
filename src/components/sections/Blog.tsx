@@ -2,6 +2,7 @@ import React from 'react';
 import { BlogSectionType } from '../../../types/sanityTypes';
 import Image from 'next/image';
 import { urlFor } from '../../../sanity/lib/sanity.image';
+import Link from 'next/link';
 
 interface BlogProps {
   data: BlogSectionType;
@@ -25,10 +26,10 @@ export const Blog = ({ data }: BlogProps) => {
               key={post._id}
               className="bg-dark-grey relative rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105"
             >
-              <a
+              <Link
                 href={`/blog/${post.slug?.current || '#'}`}
                 className="absolute inset-0 cursor-pointer"
-              ></a>
+              ></Link>
               <div className="aspect-w-16 aspect-h-9">
                 <Image
                   src={urlFor(post.mainImage).width(400).height(250).url()}
@@ -54,7 +55,7 @@ export const Blog = ({ data }: BlogProps) => {
                   {post.title}
                 </h3>
 
-                <a
+                <Link
                   href={`/blog/${post.slug?.current || '#'}`}
                   className="cursor-pointer inline-flex items-center text-grey hover:text-grey/50 font-semibold transition-colors"
                 >
@@ -72,14 +73,14 @@ export const Blog = ({ data }: BlogProps) => {
                       d="M17 8l4 4m0 0l-4 4m4-4H3"
                     ></path>
                   </svg>
-                </a>
+                </Link>
               </div>
             </article>
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <a
+          <Link
             href="/blog"
             className="inline-flex items-center px-6 py-3 bg-primary-600 text-grey font-semibold rounded-lg hover:bg-primary-700 transition-colors"
           >
@@ -97,7 +98,7 @@ export const Blog = ({ data }: BlogProps) => {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               ></path>
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

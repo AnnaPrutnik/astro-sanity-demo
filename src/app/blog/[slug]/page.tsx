@@ -5,20 +5,29 @@ import { PortableText } from 'next-sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 import { urlFor } from '../../../../sanity/lib/sanity.image';
+import { draftMode } from 'next/headers';
+import { getCurrentBlogQuery } from '@/api/queries';
 
-async function getPostBySlug(slug: string): Promise<PostType | null> {
-  const query = `*[_type == "post" && slug.current == $slug][0]`;
-  return client.fetch(query, { slug });
-}
-
-interface BlogPostPageProps {
-  params: { slug: string };
-}
+type Params = Promise<{ slug: string }>;
 
 export const dynamic = 'force-dynamic';
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getPostBySlug(params.slug);
+export default async function Page({ params }: { params: Params }) {
+  const { slug } = await params;
+  const { isEnabled } = await draftMode();
+
+  const post: PostType | null = await client.fetch(
+    getCurrentBlogQuery,
+    { slug },
+    isEnabled
+      ? {
+          perspective: 'drafts',
+          useCdn: false,
+          stega: true,
+        }
+      : undefined
+  );
+
   if (!post) return notFound();
 
   return (

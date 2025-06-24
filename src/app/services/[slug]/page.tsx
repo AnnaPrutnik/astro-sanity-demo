@@ -2,20 +2,30 @@ import { client } from '../../../../sanity/lib/sanity.client';
 import { ServiceCardType } from '../../../../types/sanityTypes';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { draftMode } from 'next/headers';
+import { getCurrentServiceQuery } from '@/api/queries';
 
-interface ServicePageProps {
-  params: { slug: string };
-}
-
-async function getServiceBySlug(slug: string): Promise<ServiceCardType | null> {
-  const query = `*[_type == "serviceCard" && slug.current == $slug][0]`;
-  return client.fetch(query, { slug });
-}
+type Params = Promise<{ slug: string }>;
 
 export const dynamic = 'force-dynamic';
 
-export default async function ServicePage({ params }: ServicePageProps) {
-  const service = await getServiceBySlug(params.slug);
+export default async function ServicePage({ params }: { params: Params }) {
+  const { slug } = await params;
+
+  const { isEnabled } = await draftMode();
+
+  const service: ServiceCardType | null = await client.fetch(
+    getCurrentServiceQuery,
+    { slug },
+    isEnabled
+      ? {
+          perspective: 'drafts',
+          useCdn: false,
+          stega: true,
+        }
+      : undefined
+  );
+
   if (!service) return notFound();
 
   return (
