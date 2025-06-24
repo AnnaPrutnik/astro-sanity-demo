@@ -9,27 +9,27 @@ export const mainPage = defineType({
     defineField({
       name: 'heroSection',
       title: 'Hero Section',
-      options: { collapsible: true, collapsed: true },
+      options: { collapsible: true, collapsed: false },
       type: 'object',
       fields: [
         defineField({
           name: 'title',
           title: 'Title',
-          type: 'coloredText',
+          type: 'internationalizedArrayColoredText',
 
           validation: (Rule) => Rule.required(),
         }),
         defineField({
           name: 'text',
           title: 'Text',
-          type: 'text',
+          type: 'internationalizedArrayText',
 
           validation: (Rule) => Rule.required(),
         }),
         defineField({
-          name: 'image',
+          name: 'btnTitle',
           title: 'button title',
-          type: 'string',
+          type: 'internationalizedArrayString',
 
           validation: (Rule) => Rule.required(),
         }),

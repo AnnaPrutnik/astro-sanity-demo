@@ -1,5 +1,6 @@
 import { client } from '@cms/lib/sanity.client';
 import { draftMode } from 'next/headers';
+import { getLocale } from 'next-intl/server';
 
 import { Hero } from '@/components/sections/Hero';
 import { About } from '@/components/sections/About';
@@ -11,10 +12,11 @@ import { mainPageQuery } from '@/api/queries';
 
 export default async function Home() {
   const { isEnabled } = await draftMode();
+  const locale = await getLocale();
 
   const mainPageData = await client.fetch(
     mainPageQuery,
-    { slug: undefined },
+    { locale },
     isEnabled
       ? {
           perspective: 'previewDrafts',

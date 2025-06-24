@@ -4,7 +4,7 @@ import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './sanity/schemas';
 import { deskStructure } from './sanity/lib/deskStructure';
 import { presentationTool } from 'sanity/presentation';
-import { documentInternationalization } from '@sanity/document-internationalization';
+import { internationalizedArray } from 'sanity-plugin-internationalized-array';
 
 export default defineConfig({
   name: 'default',
@@ -17,6 +17,14 @@ export default defineConfig({
       structure: deskStructure,
     }),
     visionTool(),
+    internationalizedArray({
+      languages: [
+        { id: 'en', title: 'English' },
+        { id: 'uk', title: 'Ukrainian' },
+      ],
+      defaultLanguages: ['en'],
+      fieldTypes: ['string', 'coloredText', 'text'],
+    }),
     presentationTool({
       previewUrl: {
         origin: process.env.SANITY_STUDIO_PREVIEW_ORIGIN,
