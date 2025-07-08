@@ -19,7 +19,7 @@ export const youtube = defineType({
   ],
   preview: {
     select: {
-      url: 'url',
+      title: 'url',
     },
   },
   components: {

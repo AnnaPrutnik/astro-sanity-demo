@@ -2,19 +2,15 @@ import type { PreviewProps } from 'sanity';
 import { Flex, Text } from '@sanity/ui';
 import YouTubePlayer from 'react-player';
 
-interface PreviewYouTubeProps extends PreviewProps {
-  url: string;
-}
-
-export function YouTubePreview(props: PreviewYouTubeProps) {
+export function YouTubePreview(props: PreviewProps) {
   console.log(props);
 
-  const { url } = props;
+  const { title } = props;
   return (
     <Flex padding={4} justify={'center'}>
       <Flex padding={1} justify={'center'}>
-        {url ? (
-          <YouTubePlayer height={200} src={url} />
+        {title ? (
+          <YouTubePlayer height={200} src={title.toString()} />
         ) : (
           <Text>Додати посилання на відео</Text>
         )}
