@@ -2,19 +2,19 @@ import { defineType } from 'sanity';
 
 export const siteSettings = defineType({
   name: 'siteSettings',
-  title: 'Site Settings',
+  title: 'Загальні налаштування',
   type: 'document',
   fields: [
     {
       name: 'title',
-      title: 'Site Title',
-      type: 'string',
+      title: 'SEO: Заголовок сайту',
+      type: 'internationalizedArrayString',
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'description',
-      title: 'Site Description',
-      type: 'text',
+      title: 'SEO: Опис сайту',
+      type: 'internationalizedArrayText',
     },
     {
       name: 'logo',
@@ -49,7 +49,7 @@ export const siteSettings = defineType({
 
     {
       name: 'contactInfo',
-      title: 'Contact Information',
+      title: 'Контактна інформація',
       type: 'object',
       fields: [
         {
@@ -59,12 +59,12 @@ export const siteSettings = defineType({
         },
         {
           name: 'phone',
-          title: 'Phone',
+          title: 'Номер телефону',
           type: 'string',
         },
         {
           name: 'address',
-          title: 'Address',
+          title: 'Адреса',
           type: 'text',
         },
       ],

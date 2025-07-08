@@ -45,7 +45,7 @@ export default async function LocaleLayout({
   }
   const siteSettings = await client.fetch(
     siteSettingQuery,
-    { slug: undefined },
+    { slug: undefined, locale },
     isEnabled
       ? {
           perspective: 'previewDrafts',
@@ -64,6 +64,18 @@ export default async function LocaleLayout({
       lang={locale}
       className={`${geistSans.className} ${geistMono.className} antialiased`}
     >
+      <head>
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="type" property="og:type" content="website" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1"
+        />
+        <meta name="title" content={siteSettings.title} />
+        <meta name="description" content={siteSettings.description} />
+        <title>{siteSettings.title}</title>
+      </head>
       <body>
         <NextIntlClientProvider>
           <Header logo={siteSettings.logo} />

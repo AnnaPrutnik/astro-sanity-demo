@@ -2,19 +2,19 @@ import { defineField, defineType } from 'sanity';
 
 export const post = defineType({
   name: 'post',
-  title: 'Blog Post',
+  title: 'Пост',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
-      title: 'Blog Title',
+      title: 'Заголовок',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
 
     defineField({
       name: 'slug',
-      title: 'Slug',
+      title: 'Посилання',
       type: 'slug',
       options: {
         source: 'title',
@@ -23,13 +23,13 @@ export const post = defineType({
     }),
     defineField({
       name: 'description',
-      title: 'Description',
+      title: 'Короткий опис',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'mainImage',
-      title: 'Main Image',
+      title: 'Заставка',
       type: 'image',
       options: {
         hotspot: true,
@@ -38,14 +38,75 @@ export const post = defineType({
     }),
     defineField({
       name: 'content',
-      title: 'Content',
+      title: 'Основний контент',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [
+        { type: 'block' },
+        {
+          type: 'youtube',
+        },
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: 'width',
+              title: 'Ширина у %',
+              type: 'number',
+              initialValue: 100,
+            },
+            {
+              name: 'isEmbed',
+              title: 'Вмонтувати в текст',
+              type: 'boolean',
+              options: { layout: 'checkbox' },
+            },
+
+            {
+              name: 'position',
+              title: 'Розміщення',
+              type: 'string',
+              initialValue: 'center',
+              options: {
+                list: [
+                  { title: 'Зліва', value: 'left' },
+                  { title: 'По центру', value: 'center' },
+                  { title: 'Справа', value: 'right' },
+                ],
+                layout: 'radio',
+                direction: 'horizontal',
+              },
+            },
+            {
+              name: 'aspectRatio',
+              title: 'Формат зображення',
+              type: 'number',
+              initialValue: 1.77,
+              options: {
+                list: [
+                  { title: '3:4', value: 0.75 },
+                  { title: 'Квадрат', value: 1 },
+                  { title: '16:9', value: 1.77 },
+                ],
+                layout: 'radio',
+                direction: 'horizontal',
+              },
+            },
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alt',
+            },
+          ],
+        },
+      ],
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'tags',
-      title: 'Tags',
+      title: 'Основні теги',
       type: 'array',
       of: [{ type: 'string' }],
       validation: (Rule) => Rule.required(),
@@ -53,7 +114,7 @@ export const post = defineType({
 
     defineField({
       name: 'publishedAt',
-      title: 'Published At',
+      title: 'Дата публікації',
       type: 'datetime',
       validation: (Rule) => Rule.required(),
     }),

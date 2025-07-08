@@ -1,12 +1,13 @@
 import { client } from '@cms/lib/sanity.client';
 import { PostType } from '../../../../../types/sanityTypes';
 import { notFound } from 'next/navigation';
-import { PortableText } from 'next-sanity';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { urlFor } from '@cms/lib/sanity.image';
 import { draftMode } from 'next/headers';
 import { getCurrentBlogQuery } from '@/api/queries';
+import { BlogContent } from '@/components/shared/BlogContent/BlogContent';
 
 type Params = Promise<{ slug: string }>;
 
@@ -15,8 +16,6 @@ export const dynamic = 'force-dynamic';
 export default async function Page({ params }: { params: Params }) {
   const { slug } = await params;
   const { isEnabled } = await draftMode();
-
-  console.log(draftMode);
 
   const post: PostType | null = await client.fetch(
     getCurrentBlogQuery,
@@ -57,7 +56,7 @@ export default async function Page({ params }: { params: Params }) {
         </div>
       )}
       <div className="prose prose-invert mb-8">
-        <PortableText value={post.content} />
+        <BlogContent data={post.content} />
       </div>
       <div className="flex flex-wrap gap-2 mb-8">
         {post.tags.map((tag) => (

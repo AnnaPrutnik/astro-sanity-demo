@@ -1,4 +1,4 @@
-import { TypedObject } from '@portabletext/types';
+import { PortableTextBlock, TypedObject } from '@portabletext/types';
 
 export interface SanityImageType {
   _type: 'image';
@@ -80,7 +80,7 @@ export interface PostType {
   slug: { _type: 'slug'; current: string };
   description: string;
   mainImage: SanityImageType;
-  content: TypedObject[];
+  content: PortableTextBlock[];
   tags: string[];
   publishedAt: string;
 }

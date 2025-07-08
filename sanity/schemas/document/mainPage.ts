@@ -3,32 +3,32 @@ import GlobeIcon from '../../components/GlobeIcon';
 
 export const mainPage = defineType({
   name: 'mainPage',
-  title: 'Main Page',
+  title: 'Головна сторінка',
   type: 'document',
   fields: [
     defineField({
       name: 'heroSection',
-      title: 'Hero Section',
+      title: 'Перша секція',
       options: { collapsible: true, collapsed: false },
       type: 'object',
       fields: [
         defineField({
           name: 'title',
-          title: 'Title',
+          title: 'Заголовок',
           type: 'internationalizedArrayColoredText',
 
           validation: (Rule) => Rule.required(),
         }),
         defineField({
           name: 'text',
-          title: 'Text',
+          title: 'Короткий опис',
           type: 'internationalizedArrayText',
 
           validation: (Rule) => Rule.required(),
         }),
         defineField({
           name: 'btnTitle',
-          title: 'button title',
+          title: 'Підпис кнопки',
           type: 'internationalizedArrayString',
 
           validation: (Rule) => Rule.required(),
@@ -37,12 +37,12 @@ export const mainPage = defineType({
     }),
     defineField({
       name: 'aboutSection',
-      title: 'About Section',
+      title: 'Секція Про нас',
       type: 'object',
       fields: [
         {
           name: 'name',
-          title: 'Name',
+          title: "Ім'я",
           type: 'string',
           validation: (Rule) => Rule.required(),
         },

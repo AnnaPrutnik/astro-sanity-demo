@@ -6,19 +6,26 @@ export const deskStructure = (S: StructureBuilder) =>
     .items([
       // Main Page - Singleton
       S.listItem()
-        .title('Main Page')
+        .title('Головна сторінка')
         .id('mainPage')
         .child(S.document().schemaType('mainPage').documentId('mainPage')),
       // Service Cards
+      // S.listItem()
+      //   .title('Service Cards')
+      //   .schemaType('serviceCard')
+      //   .child(S.documentTypeList('serviceCard').title('Service Cards')),
       S.listItem()
-        .title('Service Cards')
-        .schemaType('serviceCard')
-        .child(S.documentTypeList('serviceCard').title('Service Cards')),
+        .title('Блог')
+        .schemaType('post')
+        .child(S.documentTypeList('post').title('Список постів')),
       //SiteSetting
       S.listItem()
-        .title('SiteSettings')
+        .title('Загальні налаштування')
         .id('siteSettings')
         .child(
-          S.document().schemaType('siteSettings').documentId('siteSettings')
+          S.document()
+            .schemaType('siteSettings')
+            .documentId('siteSettings')
+            .title('Загальні налаштування')
         ),
     ]);

@@ -28,7 +28,12 @@ export const mainPageQuery = defineQuery(`*[_type == "mainPage"][0]{
     }
   }`);
 
-export const siteSettingQuery = defineQuery(`*[_type == "siteSettings"][0]`);
+export const siteSettingQuery = defineQuery(`*[_type == "siteSettings"][0]{
+  ...,
+  "description": description[_key==$locale][0].value,
+  "title": title[_key==$locale][0].value,
+  
+}`);
 
 export const getCurrentServiceQuery = defineQuery(
   `*[_type == "serviceCard" && slug.current == $slug][0]`

@@ -3,6 +3,7 @@ import { serviceCard } from './document/serviceCard';
 import { coloredTextType } from './object/coloredText';
 import { siteSettings } from './document/siteSettings';
 import { post } from './document/post';
+import { youtube } from './document/youtube';
 
 export const schemaTypes = [
   mainPage,
@@ -10,4 +11,5 @@ export const schemaTypes = [
   coloredTextType,
   siteSettings,
   post,
+  youtube,
 ];

@@ -19,10 +19,10 @@ export const About = ({ data }: AboutProps) => {
               {image && (
                 <Image
                   alt={name || 'Professional consultant'}
-                  src={urlFor(image).width(600).height(800).url()}
+                  src={urlFor(image).width(600).height(600).url()}
                   width={600}
-                  height={800}
-                  className="w-full  h-96 lg:h-[500px] object-cover rounded-lg shadow-xl"
+                  height={600}
+                  className="w-full h-96 lg:h-[500px] object-cover rounded-lg shadow-xl"
                 />
               )}
 
