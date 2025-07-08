@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { client } from '@cms/lib/sanity.client';
 
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
