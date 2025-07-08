@@ -25,10 +25,10 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: 'Sanity Demo',
-  description: 'Demo version for Sanity capabilities',
-};
+// export const metadata: Metadata = {
+//   title: 'Sanity Demo',
+//   description: 'Demo version for Sanity capabilities',
+// };
 
 export default async function LocaleLayout({
   children,
